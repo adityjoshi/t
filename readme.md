@@ -1,4 +1,4 @@
 
-# t ![t](https://github.com/egonelbre/gophers/blob/master/vector/science/power-to-the-masses.svg)
+# t  <img src="https://github.com/adityjoshi/t/blob/main/network-side.svg" width="100" height="100">      <img src=" https://github.com/adityjoshi/t/blob/main/network.svg" width="100" height="100">  
 
 ## t is the BitTorrent client written in golang 
