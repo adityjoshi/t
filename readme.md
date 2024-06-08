@@ -1,4 +1,4 @@
 
-# t  <img src="https://github.com/adityjoshi/t/blob/main/network-side.svg" width="100" height="100">      <img src=" https://github.com/adityjoshi/t/blob/main/network.svg" width="100" height="100">  
+ <img src="https://github.com/adityjoshi/t/blob/main/network-side.svg" width="110" height="80" align="left">    <img src="https://github.com/adityjoshi/t/blob/main/network.svg" width="140" height="140" align="right">  
 
-## t is the BitTorrent client written in golang 
+  <h1 align="center">T</h1> 
