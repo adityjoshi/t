@@ -6,6 +6,13 @@ import (
 	"os"
 )
 
+// splitting the pieces 
+
+func batch(data []byte, batch int) []entities.SHAhash {
+  var result []entities.SHAhash
+
+}
+
 func ParseTorrentFile(filePath string) (*entities.Torrent, error) {
 	fp, err := os.Open(filePath)
 	if err != nil {
