@@ -13,16 +13,16 @@ import (
 
 func batch(data []byte, batch int) []entities.SHAhash {
 	var result []entities.SHAhash
-  for i:= 0; i<len(data); i+= batch {
-    hash := entities.SHAhash{}
-    end := 1 + batch
-    if end > len(data) {
-      end = len(data)
-    }
-    copy(hash[:], data[i:end])
+	for i := 0; i < len(data); i += batch {
+		hash := entities.SHAhash{}
+		end := 1 + batch
+		if end > len(data) {
+			end = len(data)
+		}
+		copy(hash[:], data[i:end])
 		result = append(result, hash)
-  }
-  return result 
+	}
+	return result
 }
 
 func getTorrent(bReader *bufio.Reader) (*entities.Torrent, error) {
