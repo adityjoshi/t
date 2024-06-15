@@ -2,7 +2,8 @@ package main
 
 import "fmt"
 
-
 func main() {
-  fmt.Print("Starting of bitTorrent client")
+	for {
+		fmt.Println("Starting of bitTorrent client 🐉 ")
+	}
 }
