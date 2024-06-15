@@ -45,7 +45,6 @@ func (tr *TrackerClient) FetchPeers() ([]entities.Peer, error) {
 		return nil, nil
 	}
 
-	// TODO: Write encoder of bencoding instead of using Jackpal library
 	/*
 	   we are creatina a infoBuffer which a slice of bytes
 	   and we are using jackpal bencode to encode the tr.t.InfoRaw to the infoBuffer slice
