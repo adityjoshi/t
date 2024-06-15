@@ -9,7 +9,14 @@ import (
 	"github.com/adityjoshi/t/entities"
 )
 
-// splitting the pieces
+/*
+ batch splits a byte slice (data) into fixed-size SHA-1 hashes (entities.SHAhash) of specified batch size 20.
+ It iterates over the data in chunks determined by the batch size, creates a SHA-1 hash for each chunk,
+ and stores each hash as an entities.SHAhash in the result slice.
+ If the last chunk is smaller than the batch size, it pads the entities.SHAhash with zeros to maintain a
+ consistent size of 20 bytes per hash.
+ Returns a slice of entities.SHAhash containing the computed hashes.
+*/
 
 func batch(data []byte, batch int) []entities.SHAhash {
 	var result []entities.SHAhash
