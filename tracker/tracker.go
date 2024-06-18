@@ -1,15 +1,18 @@
 package tracker
 
 import (
+	"bufio"
 	"bytes"
 	"crypto/sha1"
 	"errors"
+	"io"
 	"net/http"
 	"net/url"
 	"strconv"
 
-	bencode "github.com/jackpal/bencode-go"
+	"github.com/jackpal/bencode-go"
 
+	myBencode "github.com/adityjoshi/t/bencode"
 	"github.com/adityjoshi/t/entities"
 )
 
@@ -37,6 +40,45 @@ func safeString(v interface{}) string {
 		return ""
 	}
 	return x
+}
+
+func prepareTrackerResponse(body io.ReadCloser) (*entities.TrackerResponse, error) {
+	data, err := myBencode.Decode(bufio.NewReader(body))
+	if err != nil {
+		return nil, err
+	}
+
+	responseMap, ok := data.(map[string]interface{})
+	if !ok {
+		return nil, errors.New("response not a valid bencoding")
+	}
+
+	var peers []entities.Peer
+
+	peersRaw, ok := responseMap["peers"].([]interface{})
+	if ok {
+		for _, pInterface := range peersRaw {
+			pRaw, ok := pInterface.(map[string]interface{})
+			if !ok {
+				continue
+			}
+			peers = append(peers, entities.Peer{
+				IP:     safeString(pRaw["ip"]),
+				Port:   safeInt64(pRaw["port"]),
+				PeerID: safeString(pRaw["peer id"]),
+			})
+		}
+	}
+
+	response := &entities.TrackerResponse{
+		Complete:      safeInt64(responseMap["complete"]),
+		Incomplete:    safeInt64(responseMap["incomplete"]),
+		Interval:      safeInt64(responseMap["interval"]),
+		FailureReason: safeString(responseMap["interval"]),
+		Peer:          peers,
+	}
+
+	return response, nil
 }
 
 func (tr *TrackerClient) FetchPeers() ([]entities.Peer, error) {
