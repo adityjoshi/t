@@ -42,6 +42,12 @@ func safeString(v interface{}) string {
 	return x
 }
 
+/*
+The FetchPeers() is used to construct the url and obtain the list of peers from the Tracker and
+the resposne that we get from tracker is decoded by prepareTrackerResponse(). It is responsible
+for decoding the response, extracting peer information, and creating a TrackerResponse object.
+*/
+
 func prepareTrackerResponse(body io.ReadCloser) (*entities.TrackerResponse, error) {
 	data, err := myBencode.Decode(bufio.NewReader(body))
 	if err != nil {
@@ -128,5 +134,5 @@ func (tr *TrackerClient) FetchPeers() ([]entities.Peer, error) {
 		return nil, errors.New(tResponse.FailureReason)
 	}
 
-	return tResponse.Peers, nil
+	return tResponse.Peer, nil
 }
