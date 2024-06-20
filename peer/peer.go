@@ -4,9 +4,14 @@ import (
 	"encoding/binary"
 	"errors"
 	"net"
+	"strconv"
 
 	"github.com/adityjoshi/t/entities"
 )
+
+type wrapperPeer struct {
+  entities.Peer
+}
 
 func Unmarshal(peersBin []byte) ([]entities.Peer, error) {
 	// Peers or peersSize is another long binary blob which holds the ip address and port the first 4 bit stores the ip and the last 2 store port
@@ -22,4 +27,8 @@ func Unmarshal(peersBin []byte) ([]entities.Peer, error) {
 		peers[i].Port = int64(binary.BigEndian.Uint16([]byte(peersBin[offset+4 : offset+6])))
 	}
 	return peers, nil
+}
+
+func (p wrapperPeer) String() string {
+	return net.JoinHostPort(p.IP, strconv.FormatInt(p.Port, 10))
 }
