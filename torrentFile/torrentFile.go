@@ -55,7 +55,10 @@ func getTorrent(bReader *bufio.Reader) (*entities.Torrent, error) {
 		Pieces:      batch([]byte(torrentInfoData["pieces"].(string)), 20),
 	}
 	torrent.InfoRaw = torrentData["info"].(map[string]interface{})
-	return torrent, nil
+  if err := torrent.CalculateInfoHash(); err!= nil {
+    return nil,err
+  }
+  return torrent, nil
 }
 
 func ParseTorrentFile(filePath string) (*entities.Torrent, error) {
