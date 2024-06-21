@@ -9,8 +9,8 @@ import (
 	"github.com/adityjoshi/t/entities"
 )
 
-type wrapperPeer struct {
-  entities.Peer
+type WrapperPeer struct {
+	entities.Peer
 }
 
 func Unmarshal(peersBin []byte) ([]entities.Peer, error) {
@@ -29,6 +29,6 @@ func Unmarshal(peersBin []byte) ([]entities.Peer, error) {
 	return peers, nil
 }
 
-func (p wrapperPeer) String() string {
+func (p WrapperPeer) String() string {
 	return net.JoinHostPort(p.IP, strconv.FormatInt(p.Port, 10))
 }
