@@ -1,5 +1,4 @@
-# <span style="float: right; display: inline-block;"><img src="https://github.com/user-attachments/assets/9ada6b08-50df-4ee6-81dc-69cd9be4a4a6" alt="Group 1" width="20%" style="vertical-align: middle; margin-bottom: 0;"></span>     T: A BitTorrent Client written in Golang
-
+![Group 1 (2)](https://github.com/user-attachments/assets/37b409c0-79c7-43ce-8b51-17da0fd63aa2)
 
 
 
