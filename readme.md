@@ -63,5 +63,5 @@ Got ideas? We’d love your help! Here’s how to contribute:
 4. Push to your branch (`git push origin feature/YourFeature`).
 5. Open a pull request.
 
-I created this BitTorrent client after getting fed up with her frigid replies—always a **429 Too Many Requests**. While she’s still waiting for a **200 OK**, I’m busy redefining what’s possible. When connections falter, I don’t just adapt; I innovate.
+t <3
 
